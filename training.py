@@ -1,3 +1,4 @@
+import pickle
 import sqlite3
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -30,3 +31,6 @@ y_pred = model.predict(X_test)
 print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 print(f'Accuracy score: {accuracy_score(y_test, y_pred)}')
+
+with open('model.pkl', 'wb') as pf:
+    pickle.dump(model, pf)
