@@ -1,19 +1,22 @@
 import pickle
 
-from flask import Flask, jsonify
+from flask import Flask
+from flask_restplus import Api, Resource
 
-app = Flask("relevance-classifier-service")
+app = Flask(__name__)
+api = Api(app)
 model = pickle.load(open('model.pkl', 'rb'))
 
 
-@app.route("/classify/<sentence>")
-def classify(sentence):
-    prediction = model.predict([sentence])
-    response = {
-        'relevant': int(prediction[0]) == 1,
-        'sentence': sentence
-    }
-    return jsonify(response)
+@api.route("/classify/<sentence>")
+class Classifier(Resource):
+    def get(self, sentence):
+        prediction = model.predict([sentence])
+        response = {
+            'relevant': int(prediction[0]) == 1,
+            'sentence': sentence
+        }
+        return response
 
 
 if __name__ == '__main__':
