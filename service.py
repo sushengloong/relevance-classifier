@@ -9,6 +9,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 
 @api.route("/classify/<sentence>")
+@api.doc(params={'sentence': 'Sentence for relevance classification'})
 class Classifier(Resource):
     def get(self, sentence):
         prediction = model.predict([sentence])
