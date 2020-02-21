@@ -2,6 +2,8 @@
 
 Training and serving model for classifying whether a sentence is relevant.
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+
 ## Setup
 
 Create a python virtual environment and install dependencies.
