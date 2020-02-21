@@ -32,5 +32,5 @@ print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 print(f'Accuracy score: {accuracy_score(y_test, y_pred)}')
 
-with open('model.pkl', 'wb') as pf:
+with open('./app/model.pkl', 'wb') as pf:
     pickle.dump(model, pf)
